@@ -1,3 +1,4 @@
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -28,30 +29,32 @@ public class NextPalindrome {
 
         // transformar o próximo número em array
 
-        String[] numeroEmArray = String.valueOf(listaDeNumeros[i]).split("");
+        int[] numeroEmArray = Integer.toString(listaDeNumeros[i]).chars().toArray();
 
-        int quantidadeDeDigitos = numeroEmArray.length;
 
-        // dividir array em dois para comparar primeiro e ultimo digito
+          int quantidadeDeDigitos = numeroEmArray.length;
 
-        int digitoAtual;
-        int left, right;
+          // dividir array em dois para comparar primeiro e ultimo digito
 
-        for (digitoAtual = 0; digitoAtual < (quantidadeDeDigitos / 2); digitoAtual++) {
-          left = digitoAtual;
-          right = quantidadeDeDigitos - digitoAtual - 1;
+          int digitoAtual;
+          int right = quantidadeDeDigitos - 1;
 
-          // comparando primeiro e ultimo digito
+          for (digitoAtual = 0; digitoAtual < right; digitoAtual++) {
+            right = quantidadeDeDigitos - digitoAtual - 1;
 
-          if (!Objects.equals(numeroEmArray[left], numeroEmArray[right])) {
-            iguais = false;
-            break;
+            // comparando primeiro e ultimo digito
+
+            if (!Objects.equals(numeroEmArray[digitoAtual], numeroEmArray[right])) {
+              iguais = false;
+              break;
+            }
+          }
+          if (iguais) {
+            if (numeroEmArray.length < 1000000) {
+              palindrome = true;
+            } else { listaDeNumeros[i] = 0;}
           }
         }
-        if (iguais) {
-          palindrome = true;
-        }
-      }
       }
       for (int i = 0; i < testes; i++) {
           System.out.println(listaDeNumeros[i]);

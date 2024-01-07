@@ -27,21 +27,27 @@ import java.util.Scanner;
 
 public class SomaArray {
 
-    public static void main(String[] args){
+    public static int[] main(String[] args){
 
         Scanner sc = new Scanner(System.in);
 
-        int[] nums ={2,7,11,15};
+        int[] nums ={1,2,3,4,5,6,7};
         int target = '9';
+        int i = '0';
+        int[] result = {} ;
 
-        for (int i=0; i<(nums.length-2);i++){
+        for (i=0; i<(nums.length-2);i++){
 
             if (nums[i] + nums[i+1] == target) {
-                System.out.println(nums[i],nums[i+1]);
+                result[0] = i;
+                result[1] = i+1;
                 break;
-            } else {i+1}
+            } else {
+                i=i+1;
+                        }
             }
-        }
+        return result;
+    }
 
 
     }
