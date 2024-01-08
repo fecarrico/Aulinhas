@@ -1,5 +1,5 @@
 public class PalindromeLeetCode {
-    public static boolean main(String[] args){
+    public static String main(String[] args){
 
 
 //        Given an integer x, return true if x is a
@@ -24,25 +24,42 @@ public class PalindromeLeetCode {
 //        Output: false
 //        Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
+        int x;
 
-        int x = 121;
 
 
         boolean palindrome = false;
+        int[] y = Integer.toString(x).chars().toArray();
 
-        while (!palindrome) {
-            x = x++;
-            int[] y = Integer.toString(x).chars().toArray();
-            int right = 0;
-            int left = y.length-1;
+        if (y.length == 2 || x <= -1){
 
-        for (int i=right;right<left;i++){
-            if (y[right]==y[left]){
-                right++;
-                left--;
-            } else {break;}
+            palindrome = false;
+            return palindrome;
+
         }
-        palindrome = true;
+        if (y.length == 1 || x == 0){
+            palindrome = true;
+            return palindrome;
+
+        } else {
+
+            int right = 0;
+            int left = y.length - 1;
+            boolean iguais = false;
+
+            for (int i = right; right < left; i++) {
+                if (y[right] == y[left]) {
+                    right++;
+                    left--;
+                    iguais = true;
+                } else {
+                    iguais = false;
+                    break;
+                }
+            }
+            if (iguais) {
+                palindrome = true;
+            }
         }
         return palindrome;
 
